@@ -1,0 +1,5 @@
+<h1><%= @dog.name %></h1>
+<h3><%= @dog.breed %></h3>
+<%=@dog.picture%>
+<img src= <%="@dog.picture"%>>
+<h3><%= link_to @owner.name, user_path(@owner)%></h3>
