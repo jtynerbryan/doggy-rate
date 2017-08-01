@@ -18,7 +18,6 @@ class DogsController < ApplicationController
 	def show
 		authenticate
 		@dog = Dog.find(params[:id])
-		#@owner = User.find(@dog.user_id)
 		@owner = @dog.user
 	end
 

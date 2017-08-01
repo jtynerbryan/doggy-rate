@@ -1,3 +1,12 @@
 <h1><%= @user.name %></h1>
 <h3><%= @user.email %></h3>
+
+<h3>My Dogs</h3>
+<% @dogs.each do |dog| %>
+<%= link_to dog.name, dog_path(dog) %><br>
+<% end %><br>
+
+<%= link_to "Review this #{@user.name}", {controller: "user_reviews", action: "new", user: @user.id} %>
+
+<%= link_to "All Dogs", dogs_path%><br>
 <%= link_to "Logout",  session_path, method: :delete%>

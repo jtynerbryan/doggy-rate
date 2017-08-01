@@ -7,12 +7,12 @@
 # system, you should be using db:schema:load, not running all the migrations
 # from scratch. The latter is a flawed and unsustainable approach (the more migrations
 # you'll amass, the slower it'll run and the greater likelihood for issues).
-#
+
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170731213647) do
+ActiveRecord::Schema.define(version: 20170801134626) do
 
-  create_table "dog_critiques", force: :cascade do |t|
+  create_table "dog_reviews", force: :cascade do |t|
     t.text "content"
     t.integer "user_id"
     t.integer "dog_id"
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 20170731213647) do
     t.string "picture"
   end
 
-  create_table "user_critiques", force: :cascade do |t|
+  create_table "user_reviews", force: :cascade do |t|
     t.string "content"
     t.boolean "mean", default: false
     t.datetime "created_at", null: false

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  resources :user_critiques
-  resources :dog_critiques
+  resources :user_reviews
+  resources :dog_reviews
   resources :dogs
   resources :users
   resources :sessions, only: [:create, :destroy]

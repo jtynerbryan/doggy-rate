@@ -1,5 +1,16 @@
 <h1><%= @dog.name %></h1>
 <h3><%= @dog.breed %></h3>
-<%=@dog.picture%>
 <img src= <%="@dog.picture"%>>
+<h3>Owner:</h3>
 <h3><%= link_to @owner.name, user_path(@owner)%></h3>
+
+<h3>Reviews</h3>
+<% @dog.recent_reviews.each do |review| %>
+<%= "#{review.content}" %><br>
+-
+<%= link_to review.user.name, user_path(review.user) %><br><br>
+<% end %><br>
+
+
+<br>
+<%= link_to "Review #{@dog.name}", {controller: "dog_reviews", action: "new", dog: @dog.id} %>
