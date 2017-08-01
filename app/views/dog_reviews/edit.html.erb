@@ -1,13 +1,13 @@
-<h1>New Dog Review</h1>
+<h1>Edit Dog Review</h1>
 
 <h3> <%= @dog.name %> </h3>
 <h3> <%= @dog.breed %> </h3>
 <%=image_tag  "#{@dog.picture}" %>
 
-<%= form_for @dog_review, :url => {controller: "dog_reviews", action: "create", dog: @dog.id} do |f| %>
+<%= form_for @dog_review, :url => {controller: "dog_reviews", action: "update", dog: @dog.id} do |f| %>
 
 <label>Type Your Review Here</label>
 <%= f.text_area :content %>
 
-<%= f.submit "Review Dog" %>
+<%= f.submit "Edit Review" %>
 <% end %>

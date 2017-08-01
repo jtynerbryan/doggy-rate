@@ -21,7 +21,6 @@ class DogsController < ApplicationController
 		@owner = @dog.user
 	end
 
-
 	private
 
 	def dog_params

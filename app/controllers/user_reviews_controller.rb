@@ -6,12 +6,12 @@ class UserReviewsController < ApplicationController
 
 	def new
 		@user_review = UserReview.new
-		@reviewee = User.find(params[:user])
+		@reviewee = User.find(params[:user])		
 	end
 
 	def create
 		@reviewer = User.find(session[:user_id])
-		@reviewee = User.find(params[:user])
+		@reviewee = User.find(params[:reviewee])
 		@user_review = UserReview.create(user_params)
 		@reviewer.reviews_as_reviewer << @user_review
 		@reviewee.reviews_as_reviewee << @user_review
@@ -30,6 +30,6 @@ class UserReviewsController < ApplicationController
 	private
 
 	def user_params
-		params.require(:user).permit(:content, :mean)
+		params.require(:user_review).permit(:content, :mean)
 	end
 end

@@ -1,6 +1,6 @@
 <h1><%= @dog.name %></h1>
 <h3><%= @dog.breed %></h3>
-<img src= <%="@dog.picture"%>>
+<%= image_tag "#{@dog.picture}" %>
 <h3>Owner:</h3>
 <h3><%= link_to @owner.name, user_path(@owner)%></h3>
 
@@ -13,4 +13,9 @@
 
 
 <br>
-<%= link_to "Review #{@dog.name}", {controller: "dog_reviews", action: "new", dog: @dog.id} %>
+<% if !current_user.reviewed?(@dog) && @owner != current_user %>
+	<%= link_to "Review #{@dog.name}", {controller: "dog_reviews", action: "new", dog: @dog.id} %>
+<% end %>	
+	
+
+

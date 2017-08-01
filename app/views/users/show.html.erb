@@ -1,12 +1,37 @@
 <h1><%= @user.name %></h1>
-<h3><%= @user.email %></h3>
 
 <h3>My Dogs</h3>
-<% @dogs.each do |dog| %>
-<%= link_to dog.name, dog_path(dog) %><br>
-<% end %><br>
+<% if @dogs.empty? %>
+	<p>You haven't added any dogs yet</p>
+<% else %>
+	<% @dogs.each do |dog| %>
+	<%= link_to dog.name, dog_path(dog) %><br>
+	<% end %><br>
+<% end %>	
 
-<%= link_to "Review this #{@user.name}", {controller: "user_reviews", action: "new", user: @user.id} %>
+<h3>Recent Reviews</h3>
+<% if @user.recent_reviews.empty? %>
+	<p>You haven't been reviewed yet</p>
+<% else %>	
+	<% @user.recent_reviews.each do |review| %>
+	<%= "#{review.content}" %><br>
+	<p>-</p>
+	<%= link_to review.reviewer.name, user_path(review.reviewer) %><br><br>
+	<% end %>
+<% end %>	
+
+<h3>Negative Review Count: <%= @user.negative_reviews_as_reviewee_count %></h3>
+
+<% if @user.id != session[:user_id] %>
+	<%= link_to "Review #{@user.name}", {controller: "user_reviews", action: "new", user: @user.id} %><br>
+<% end %>
+
+<% if @user == current_user %>
+	<%= link_to "Add a new Dog", new_dog_path %><br>
+<% else %>
+	<%= link_to "Back to your Profile", user_path(current_user) %><br>
+<% end %>	
+
 
 <%= link_to "All Dogs", dogs_path%><br>
 <%= link_to "Logout",  session_path, method: :delete%>

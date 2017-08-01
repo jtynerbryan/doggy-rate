@@ -1,0 +1,6 @@
+<% @user_reviews.each do |review| %>
+<%= review.content %><br>
+-
+<%= link_to review.reviewer.name, user_path(review.reviewer) %><br><br>
+
+<% end %>
