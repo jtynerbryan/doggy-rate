@@ -40,11 +40,12 @@
       <li class="active"><%= link_to "Profile", user_path(current_user)%></li>
       <li class="active"><%= link_to "Dogs", dogs_path%></li>
       <li class="active"><%= link_to "Add a new Dog", new_dog_path%></li>
+      <li class="active"><%= link_to "Logout", session_path, method: "delete"%></li>
+
 	</ul>
   </div>
 </nav>
 <% end %>
-
     <%= yield %>
 
   </body>
