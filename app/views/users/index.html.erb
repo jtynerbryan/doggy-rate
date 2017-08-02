@@ -11,9 +11,9 @@
 		<div class="row">
 			
 			<% user.dogs.each do |dog| %>
-				<div class="col-sm-4">
+				<div class="col-sm-4 text-center">
 				<%= link_to "#{dog.name} the #{dog.breed}", dog_path(dog) %><br>
-				<%= image_tag "#{dog.picture}", class: "super-small-image"%><br>
+				<%= image_tag "#{dog.picture}", class: "small-image"%><br>
 				</div>
 			<% end %>
 		</div>	
