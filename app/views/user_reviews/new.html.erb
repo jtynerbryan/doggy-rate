@@ -1,15 +1,27 @@
-<h1>New User Review</h1>
-
-<h3>Review of <%= @reviewee.name %> </h3>
-
+<div class="container">
+	<div class="page-header text-center">
+	<h2>Write a Review of <%= "#{@reviewee.name}" %></h2>
+	</div>
+</div>
 
 <%= form_for @user_review, :url => {controller: "user_reviews", action: "create", reviewee: @reviewee.id} do |f| %>
 
-<label>Type Your Review Here</label><br>
-<%= f.text_area :content %><br>
+<div class="container">
+  <div class="form-group">
+    <label>Write Your Review Here</label>
+    <%= f.text_area :content, class: "form-control",  rows: "3"%>
+</div>
 
 <label>Is this a negative review?</label><br>
-<%= f.check_box :mean %><br>
+<%= f.check_box :mean %><br><br>
 
-<%= f.submit "Review user" %>
+<%= f.submit "Review user", class: "btn btn-primary"%>
 <% end %>
+
+
+
+
+
+
+
+

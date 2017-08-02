@@ -1,13 +1,25 @@
-<h1>New Dog Review</h1>
+<div class="container">
+	<div class="page-header text-center">
+	<h2>Write a Review of <%= "#{@dog.name} the #{@dog.breed}" %></h2>
+	</div>
+</div>
 
-<h3> <%= @dog.name %> </h3>
-<h3> <%= @dog.breed %> </h3>
-<%=image_tag  "#{@dog.picture}" %>
+<div class="container">
+	<%=image_tag  "#{@dog.picture}", class: "image_center" %>
+</div>
 
 <%= form_for @dog_review, :url => {controller: "dog_reviews", action: "create", dog: @dog.id} do |f| %>
 
-<label>Type Your Review Here</label>
-<%= f.text_area :content %>
+<div class="container">
+  <div class="form-group">
+    <label>Write Your Review Here</label>
+    <%= f.text_area :content, class: "form-control",  rows: "3"%>
+  </div>
 
-<%= f.submit "Review Dog" %>
+  <%= f.submit "Submit your Review", class: "btn btn-primary" %>
 <% end %>
+</div> 
+
+
+
+

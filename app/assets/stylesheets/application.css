@@ -14,3 +14,32 @@
  *= require_self
  */
 
+img {
+	max-width: 550px;
+}
+
+.image_center {
+	display: block;
+    margin: 0 auto;
+}
+
+.small-image {
+	max-width: 350px;
+	max-height: 350px;
+	margin: 12px;
+}
+
+.super-small-image {
+	max-width: 230px;
+	max-height: 250px;
+}
+
+.super-super-small-image {
+	max-width: 130px;
+	max-height: 130px;
+}
+
+.btn-toolbar {
+	margin-top: 15px;
+	margin-bottom: 30px;
+}

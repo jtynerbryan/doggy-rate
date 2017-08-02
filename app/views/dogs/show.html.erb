@@ -1,21 +1,28 @@
-<h1><%= @dog.name %></h1>
-<h3><%= @dog.breed %></h3>
-<%= image_tag "#{@dog.picture}"%>
-<h3>Owner:</h3>
-<h3><%= link_to @owner.name, user_path(@owner)%></h3>
-
-<h3>Reviews</h3>
-<% @dog.recent_reviews.each do |review| %>
-<%= "#{review.content}" %><br>
--
-<%= link_to review.user.name, user_path(review.user) %><br><br>
-<% end %><br>
+<div class="container">
+	<div class="jumbotron text-center">
+		<h1><%="#{@dog.name} the #{@dog.breed}"  %></h1>
+		<h3>Owned by</h3>
+		<h3><%= link_to @owner.name, user_path(@owner)%></h3>
+	</div>
+</div>
 
 
+<div class="container">
+	<%= image_tag "#{@dog.picture}", class: "pull-left"%>
+	<div class="text-center">	
+		<h3>Reviews</h3>
+		<% @dog.recent_reviews.each do |review| %>
+		<%= "#{review.content}" %><br>
+		-
+		<%= link_to review.user.name, user_path(review.user) %><br><br>
+		<% end %>
+	</div>
+</div>
 <br>
+<div class="container text-center">
 <% if !current_user.reviewed?(@dog) && @owner != current_user %>
-	<%= link_to "Review #{@dog.name}", {controller: "dog_reviews", action: "new", dog: @dog.id} %>
+	<div class="btn-toolbar">
+	<%= link_to "Review #{@dog.name}", {controller: "dog_reviews", action: "new", dog: @dog.id}, class: " btn btn-primary center-block" %>
+	</div>
 <% end %>	
-	
-
-
+</div>

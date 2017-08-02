@@ -1,3 +1,13 @@
-<% @dogs.each do |dog| %>
-<%= link_to "#{dog.name}: #{dog.breed} - #{dog.user.name}", dog_path(dog)  %><br>
-<% end %>
+<div class="container">
+	<div class="jumbotron text-center">
+		<h1>The Dogs of Doggy Rate</h1>
+		<p>Click on a dog to see their profile and rate them</p>
+	</div>
+</div>
+
+<div class="container text-center">
+	<% @dogs.each do |dog| %>
+	<%= link_to "#{dog.name} the #{dog.breed}", dog_path(dog) %><br>
+	<%= image_tag "#{dog.picture}", class: "small-image"%><br>
+	<% end %>
+</div>
