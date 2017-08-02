@@ -17,8 +17,39 @@
   </head>
 
   <body>
+  <% if session[:user_id].blank? %>
+  	<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <%= link_to "Doggy Rate", root_path, :class => "navbar-brand"%>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><%= link_to "Signup", new_user_path%></li>
+      <li class="active"><%= link_to "Signin", signin_path%></li>
+    </ul>
+  </div>
+  
+</nav>
+<% else %>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <%= link_to "Doggy Rate", root_path, :class => "navbar-brand"%>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><%= link_to "Profile", user_path(current_user)%></li>
+      <li class="active"><%= link_to "Dogs", dogs_path%></li>
+      <li class="active"><%= link_to "Add a new Dog", new_dog_path%></li>
+	</ul>
+  </div>
+</nav>
+<% end %>
 
     <%= yield %>
 
   </body>
 </html>
+
+
+
+

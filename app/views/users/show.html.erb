@@ -1,4 +1,6 @@
-<h1><%= @user.name %></h1>
+<div class="container">
+	<h1><%= @user.name %></h1>
+</div>
 
 <h3>My Dogs</h3>
 <% if @dogs.empty? %>
@@ -26,12 +28,7 @@
 	<%= link_to "Review #{@user.name}", {controller: "user_reviews", action: "new", user: @user.id} %><br>
 <% end %>
 
-<% if @user == current_user %>
-	<%= link_to "Add a new Dog", new_dog_path %><br>
-<% else %>
-	<%= link_to "Back to your Profile", user_path(current_user) %><br>
-<% end %>	
 
-
-<%= link_to "All Dogs", dogs_path%><br>
-<%= link_to "Logout",  session_path, method: :delete%>
+<div class="container-fluid">
+<%= link_to "Logout",  session_path, class: "btn btn-danger pull-right"%>
+</div>

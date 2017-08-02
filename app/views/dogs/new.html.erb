@@ -1,14 +1,16 @@
+<div class="container">
 <h1>New Dog</h1>
 <%= form_for @dog do |f| %>
 
 <label>Name</label>
-<%= f.text_field :name %>
+<%= f.text_field :name, class: "form-control" %><br>
 
 <label>Breed</label>
-<%= f.text_field :breed %>
+<%= f.text_field :breed, class: "form-control" %><br>
 
 <label>Picture url</label>
-<%= f.url_field :picture %>
+<%= f.url_field :picture, class: "form-control" %><br>
 
-<%= f.submit "Add New Dog" %>
+<%= f.submit "Add New Dog", class: "btn btn-primary" %>
 <% end %>
+</div>
