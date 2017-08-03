@@ -7,14 +7,18 @@
 <% @users.each do |user| %>
 	<div class="container">
 		<h3><%= link_to user.name, user_path(user) %></h3>
+		<% if user.has_dogs? %>
 		<h4>Owner of:</h4>
+		<% else %>
+		<p>hasn't added a dog yet...</p>
+		<% end %>
 		<div class="row">
 			<% user.dogs.each do |dog| %>
-				<div class="col-sm-4 text-center">
+				<div class="col-sm-4">
 				<%= link_to "#{dog.name} the #{dog.breed}", dog_path(dog) %><br>
 					<div class="media">
 				  		<div class="media-left">
-				    	<%= image_tag(dog.picture.image.url, class: 'media-object small-image') %>
+				    	<%= image_tag(dog.picture.image.url, class: 'media-object super-small-image') %>
 				  		</div>
 					</div>
 				</div>
