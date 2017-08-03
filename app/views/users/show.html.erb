@@ -1,8 +1,15 @@
 <div class="container">
 	<div class="jumbotron text-center">
 		<h1><%= @user.name %>'s Profile</h1>
+
+		<% if @user.burned_at_stake %>
+					<h4 class='burned'> BURNED AT STAKE </h4>
+		<% end %>
+
 	</div>
 </div>
+
+
 
 
 <div class="container">
@@ -26,7 +33,7 @@
       <h3>Recent Reviews</h3>
       <% if @user.recent_reviews.empty? %>
 			<h5>You haven't been reviewed yet...</h5>
-		<% else %>	
+		<% else %>
 			<% @user.recent_reviews.each do |review| %>
 			<%= "#{review.content} - " %>
 			<%= link_to review.reviewer.name, user_path(review.reviewer) %><br><br>
@@ -45,4 +52,3 @@
 	<% end %>
 	</div>
 </div>
-

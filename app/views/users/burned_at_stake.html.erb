@@ -1,0 +1,24 @@
+<div class="container">
+	<div class="jumbotron text-center">
+		<h2>The Burned-at-Stake Community</h2>
+	</div>
+</div>
+
+<% @users.each do |user| %>
+	<div class="container">
+		<h3><%= link_to user.name, user_path(user) %></h3>
+		<h4>Owner of:</h4>
+		<div class="row">
+			<% user.dogs.each do |dog| %>
+				<div class="col-sm-4 text-center">
+				<%= link_to "#{dog.name} the #{dog.breed}", dog_path(dog) %><br>
+					<div class="media">
+				  		<div class="media-left">
+				    	<%= image_tag(dog.picture.image.url, class: 'media-object small-image') %>
+				  		</div>
+					</div>
+				</div>
+			<% end %>
+		</div>
+	</div>
+<% end %>

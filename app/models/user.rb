@@ -18,8 +18,14 @@ class User < ApplicationRecord
 	end
 
 	def reviewed?(dog)
-  		self.dog_reviews.any? {|review| review.dog == dog} 
-  	end
+  	self.dog_reviews.any? {|review| review.dog == dog}
+  end
+
+	def burn_at_stake
+		if self.negative_reviews_as_reviewee_count == 5
+			self.burned_at_stake = true
+		end
+	end
 
 
 end

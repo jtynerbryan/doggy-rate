@@ -1,14 +1,13 @@
 class UsersController < ApplicationController
 	def index
 		authenticate
-		@users = User.all
+		@users = User.all.reject {|user| user.burned_at_stake}
 	end
 
 	def new
 		@user = User.new
-
 	end
-	
+
 	def show
 		authenticate
 		@user = User.find(params[:id])
@@ -32,6 +31,10 @@ class UsersController < ApplicationController
 
 	def update
 
+	end
+
+	def burned_at_stake
+		@users = User.all.select{|user| user.burned_at_stake}
 	end
 
 	private

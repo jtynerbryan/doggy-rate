@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170803015330) do
+ActiveRecord::Schema.define(version: 20170803143444) do
 
   create_table "dog_reviews", force: :cascade do |t|
     t.string "content"
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 20170803015330) do
     t.string "name"
     t.string "email"
     t.string "password_digest"
+    t.boolean "burned_at_stake", default: false
   end
 
 end
