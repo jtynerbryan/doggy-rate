@@ -10,8 +10,7 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticate
-
-  	if !logged_in?
+    if !logged_in?
   		redirect_to '/'
   	end
   end

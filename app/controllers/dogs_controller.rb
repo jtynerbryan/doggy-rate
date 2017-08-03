@@ -9,7 +9,9 @@ class DogsController < ApplicationController
 	end
 
 	def create
+		@picture = Picture.new(image: params[:dog][:picture][:image], title: params[:dog][:picture][:title])
 		@dog = Dog.new(dog_params)
+		@dog.picture = @picture
 		@dog.user_id = session[:user_id]
 		@dog.save
 		redirect_to dog_path(@dog)
@@ -24,7 +26,7 @@ class DogsController < ApplicationController
 	private
 
 	def dog_params
-		params.require(:dog).permit(:name, :breed, :picture)
+		params.require(:dog).permit(:name, :breed)
 	end
 
 end

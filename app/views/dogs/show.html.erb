@@ -8,7 +8,12 @@
 
 
 <div class="container">
-	<%= image_tag "#{@dog.picture}", class: "pull-left"%>
+	<div class="media">
+  		<div class="media-left">
+    	<%= image_tag(@dog.picture.image.url, class: 'media-object') %>
+  		</div>
+	</div>
+
 	<div class="text-center">	
 		<h3>Reviews</h3>
 		<% @dog.recent_reviews.each do |review| %>
@@ -18,11 +23,15 @@
 		<% end %>
 	</div>
 </div>
+
 <br>
+
 <div class="container text-center">
-<% if !current_user.reviewed?(@dog) && @owner != current_user %>
-	<div class="btn-toolbar">
-	<%= link_to "Review #{@dog.name}", {controller: "dog_reviews", action: "new", dog: @dog.id}, class: " btn btn-primary center-block" %>
-	</div>
-<% end %>	
+	<% if !current_user.reviewed?(@dog) && @owner != current_user %>
+		<div class="btn-toolbar">
+		<%= link_to "Review #{@dog.name}", {controller: "dog_reviews", action: "new", dog: @dog.id}, class: " btn btn-primary center-block" %>
+		</div>
+	<% end %>	
 </div>
+
+
