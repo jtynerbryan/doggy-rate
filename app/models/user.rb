@@ -17,9 +17,16 @@ class User < ApplicationRecord
 		self.reviews_as_reviewee.select {|review| review.mean == true }.count
 	end
 
-	def reviewed?(dog)
+	def reviewed_dog?(dog)
   		self.dog_reviews.any? {|review| review.dog == dog} 
   	end
 
+  	def reviewed_user?(user)
+  		self.reviews_as_reviewer.any? {|review| review.reviewee == user} 
+  	end
+
+  	def has_dogs?
+  		self.dogs.size > 0
+  	end
 
 end
