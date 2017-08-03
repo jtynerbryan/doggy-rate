@@ -14,7 +14,11 @@
 		<% else %>
 			<% @dogs.each do |dog| %>
 				<%= link_to "#{dog.name} the #{dog.breed}", dog_path(dog) %><br>
-				<%= image_tag "#{dog.picture}", class: "super-small-image"%><br>
+				<div class="media">
+			  		<div class="media-left">
+			    	<%= image_tag(dog.picture.image.url, class: 'media-object super-small-image') %>
+			  		</div>
+				</div><br>
 			<% end %>
 		<% end %>
     </div>
@@ -41,3 +45,4 @@
 	<% end %>
 	</div>
 </div>
+

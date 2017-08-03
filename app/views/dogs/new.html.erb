@@ -8,9 +8,24 @@
 <label>Breed</label>
 <%= f.text_field :breed, class: "form-control" %><br>
 
-<label>Picture url</label>
-<%= f.url_field :picture, class: "form-control" %><br>
+<label>Upload Picture</label>
+
+<%= f.fields_for :picture, html: {multipart: true} do |ff| %>
+
+<div class="form-group">
+    <%= ff.label :title %>
+    <%= ff.text_field :title, class: 'form-control' %>
+</div>
+
+<div class="form-group">
+    <%= ff.label :image %>
+    <%= ff.file_field :image, class: 'form-control'%>
+</div>
+
+<% end %>
 
 <%= f.submit "Add New Dog", class: "btn btn-primary" %>
 <% end %>
 </div>
+
+

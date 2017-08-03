@@ -8,6 +8,8 @@
 <div class="container text-center">
 	<% @dogs.each do |dog| %>
 	<%= link_to "#{dog.name} the #{dog.breed}", dog_path(dog) %><br>
-	<%= image_tag "#{dog.picture}", class: "small-image"%><br>
+	<div class="media">
+ 		<%= image_tag(dog.picture.image.url, class: 'media-object small-image') %>
+	</div>	
 	<% end %>
 </div>

@@ -4,8 +4,6 @@ class CreateDogs < ActiveRecord::Migration[5.1]
       t.string :name
       t.string :breed
       t.integer :user_id
-
-      t.timestamps
     end
   end
 end
