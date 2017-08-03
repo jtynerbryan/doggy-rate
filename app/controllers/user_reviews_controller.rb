@@ -17,6 +17,9 @@ class UserReviewsController < ApplicationController
 		@reviewee.reviews_as_reviewee << @user_review
 		@user_review.save
 
+		@reviewee.burn_at_stake_if_neg_count_five
+		@reviewee.save
+
 		redirect_to user_path(@reviewee)
 	end
 

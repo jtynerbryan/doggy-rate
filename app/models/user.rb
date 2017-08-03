@@ -5,7 +5,7 @@ class User < ApplicationRecord
 	has_many :reviews_as_reviewer, foreign_key: "reviewer_id", class_name: "UserReview"
 	has_many :reviews_as_reviewee, foreign_key: "reviewee_id", class_name: "UserReview"
 
-	validates :name, :email, :password, presence: true
+	validates :name, :email, presence: true
 	validates :name, uniqueness: true
 	#validates_email_format_of :email, :message => 'Please enter a valid email address'
 
@@ -17,8 +17,8 @@ class User < ApplicationRecord
 		self.reviews_as_reviewee.select {|review| review.mean == true }.count
 	end
 
-	def burn_at_stake
-		if self.negative_reviews_as_reviewee_count == 5
+	def burn_at_stake_if_neg_count_five
+		if self.negative_reviews_as_reviewee_count >= 5
 			self.burned_at_stake = true
 		end
 	end

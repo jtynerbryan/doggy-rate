@@ -8,9 +8,9 @@
 	<div class="container">
 		<h3><%= link_to user.name, user_path(user) %></h3>
 		<% if user.has_dogs? %>
-		<h4>Owner of:</h4>
+			<h4>Owner of:</h4>
 		<% else %>
-		<p>hasn't added a dog yet...</p>
+			<p>hasn't added a dog yet...</p>
 		<% end %>
 		<div class="row">
 			<% user.dogs.each do |dog| %>
@@ -26,4 +26,36 @@
 		</div>	
 	</div>	
 <% end %>
+
+
+<div class="container">
+	<div class="jumbotron text-center">
+		<h2>The Burned-at-Stake Community</h2>
+	</div>
+</div>
+
+<% @burned_users.each do |user| %>
+	<div class="container">
+		<h3><%= link_to user.name, user_path(user) %></h3>
+		<% if user.has_dogs? %>
+			<h4>Owner of:</h4>
+		<% else %>
+			<p>hasn't added a dog yet...</p>
+		<% end %>
+		<div class="row">
+			<% user.dogs.each do |dog| %>
+				<div class="col-sm-4">
+				<%= link_to "#{dog.name} the #{dog.breed}", dog_path(dog) %><br>
+					<div class="media">
+				  		<div class="media-left">
+				    	<%= image_tag(dog.picture.image.url, class: 'media-object super-small-image') %>
+				  		</div>
+					</div>
+				</div>
+			<% end %>
+		</div>	
+	</div>	
+<% end %>
+
+
 

@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 	def index
 		authenticate
 		@users = User.all.reject {|user| user.burned_at_stake}
+		@burned_users = User.all.select {|user| user.burned_at_stake}
 	end
 
 	def new
@@ -33,7 +34,7 @@ class UsersController < ApplicationController
 
 	end
 
-	def burned_at_stake
+	def burned_at_stake_all
 		@users = User.all.select{|user| user.burned_at_stake}
 	end
 
