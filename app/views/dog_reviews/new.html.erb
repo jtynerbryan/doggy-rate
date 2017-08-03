@@ -5,7 +5,10 @@
 </div>
 
 <div class="container">
-	<%=image_tag  "#{@dog.picture}", class: "image_center" %>
+	<div class="media">
+  		<div class="media-left">
+    	<%= image_tag(@dog.picture.image.url, class: 'media-object') %>
+  	</div>
 </div>
 
 <%= form_for @dog_review, :url => {controller: "dog_reviews", action: "create", dog: @dog.id} do |f| %>

@@ -47,3 +47,7 @@ img {
 .burned {
     color: red;
 }
+
+.image-title {
+	margin-top: 15px;
+}

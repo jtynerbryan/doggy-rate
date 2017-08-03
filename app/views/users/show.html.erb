@@ -10,14 +10,12 @@
 </div>
 
 
-
-
 <div class="container">
   <div class="row">
     <div class="col-sm-4">
       <h3><%= @user.name %>'s Dogs:</h3>
 		<% if @dogs.empty? %>
-			<p>You haven't added any dogs yet</p>
+			<p>No dogs yet!</p>
 		<% else %>
 			<% @dogs.each do |dog| %>
 				<%= link_to "#{dog.name} the #{dog.breed}", dog_path(dog) %><br>
@@ -46,7 +44,7 @@
 </div>
 
 <div class="container text-center" id="user-show-button">
-	<% if @user.id != session[:user_id] %>
+	<% if @user.id != session[:user_id] && !current_user.reviewed_user?(@user) %>
 	<div class="btn-toolbar">
 	<%= link_to "Review #{@user.name}", {controller: "user_reviews", action: "new", user: @user.id}, class: "btn btn-primary" %>
 	<% end %>

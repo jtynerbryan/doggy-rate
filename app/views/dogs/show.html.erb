@@ -8,26 +8,30 @@
 
 
 <div class="container">
-	<div class="media">
-  		<div class="media-left">
-    	<%= image_tag(@dog.picture.image.url, class: 'media-object') %>
-  		</div>
+  <div class="row">
+    <div class="col-md-7">
+		<div class="media">
+	  		<div class="media-left">
+	    	<%= image_tag(@dog.picture.image.url, class: 'media-object') %>
+	  		</div>
+		</div>
 	</div>
-
-	<div class="text-center">	
-		<h3>Reviews</h3>
-		<% @dog.recent_reviews.each do |review| %>
-		<%= "#{review.content}" %><br>
-		-
-		<%= link_to review.user.name, user_path(review.user) %><br><br>
-		<% end %>
-	</div>
+    <div class="col-sm-4">
+ 		<div class="text-center">	
+			<h3>Reviews</h3>
+			<% @dog.recent_reviews.each do |review| %>
+			<%= "#{review.content}" %><br>
+			-
+			<%= link_to review.user.name, user_path(review.user) %><br><br>
+			<% end %>
+		</div>
+    </div>
 </div>
 
 <br>
 
 <div class="container text-center">
-	<% if !current_user.reviewed?(@dog) && @owner != current_user %>
+	<% if !current_user.reviewed_dog?(@dog) && @owner != current_user %>
 		<div class="btn-toolbar">
 		<%= link_to "Review #{@dog.name}", {controller: "dog_reviews", action: "new", dog: @dog.id}, class: " btn btn-primary center-block" %>
 		</div>

@@ -10,12 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170803143444) do
+
 
   create_table "dog_reviews", force: :cascade do |t|
     t.string "content"
     t.integer "user_id"
     t.integer "dog_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "dogs", force: :cascade do |t|
@@ -38,6 +40,8 @@ ActiveRecord::Schema.define(version: 20170803143444) do
     t.boolean "mean", default: false
     t.integer "reviewer_id"
     t.integer "reviewee_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: :cascade do |t|

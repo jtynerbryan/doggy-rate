@@ -17,15 +17,22 @@ class User < ApplicationRecord
 		self.reviews_as_reviewee.select {|review| review.mean == true }.count
 	end
 
-	def reviewed?(dog)
-  	self.dog_reviews.any? {|review| review.dog == dog}
-  end
-
 	def burn_at_stake
 		if self.negative_reviews_as_reviewee_count == 5
 			self.burned_at_stake = true
 		end
 	end
 
+	def reviewed_dog?(dog)
+		self.dog_reviews.any? {|review| review.dog == dog}
+	end
+
+	def reviewed_user?(user)
+		self.reviews_as_reviewer.any? {|review| review.reviewee == user}
+	end
+
+	def has_dogs?
+		self.dogs.size > 0
+	end
 
 end

@@ -5,11 +5,19 @@
 	</div>
 </div>
 
-<div class="container text-center">
-	<% @dogs.each do |dog| %>
-	<%= link_to "#{dog.name} the #{dog.breed}", dog_path(dog) %><br>
-	<div class="media">
- 		<%= image_tag(dog.picture.image.url, class: 'media-object small-image') %>
+<div class="container">
+	<div class="row">
+		<% @dogs.each do |dog| %>
+			<div class="col-sm-4 image-title">
+			<%= link_to "#{dog.name} the #{dog.breed}", dog_path(dog) %><br>
+				<div class="media ">
+			  		<div class="media-left">
+			    	<%= image_tag(dog.picture.image.url, class: 'media-object super-small-image') %>
+			  		</div>
+				</div>
+			</div>
+		<% end %>
 	</div>	
-	<% end %>
 </div>
+
+
