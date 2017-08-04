@@ -34,6 +34,7 @@ gem 'validates_email_format_of'
 # gem 'capistrano-rails', group: :development
 gem "paperclip", "~> 5.0.0"
 
+gem 'rspec-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
